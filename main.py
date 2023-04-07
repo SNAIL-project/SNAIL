@@ -64,7 +64,7 @@ if __name__ == "__main__":
             verbose=1,                   # Print out all the info as we're going
             batch_size=batch_size,             # Batch size as high as possible within reason
             n_steps=steps,               # Number of steps to perform before optimizing network
-            tensorboard_log="logs_exo0",  # `tensorboard --logdir out/logs` in terminal to see graphs
+            tensorboard_log="logs_exo0",  # `tensorboard --logdir logs_exo0/PPO_0` in terminal to see graphs
             device="auto"                 # Uses GPU if available
         )
 
