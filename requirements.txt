@@ -2,3 +2,4 @@ stable-baselines3
 rlgym
 rlgym-tools
 tensorboard
+numpy~=1.24.3
