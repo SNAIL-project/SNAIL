@@ -21,6 +21,7 @@ from stable_baselines3 import PPO
 from game_state import CustomStateSetterExo1, CustomStateSetterExo2, CustomStateSetterExo3
 from terminal_conditions import BallTouchGround
 from Rewards import PlayerUnderBall
+from Rewards import  PlayerUnderBall2
 
 # =============================== option for model ============================================
 agents_per_match = 1
@@ -31,23 +32,23 @@ batch_size = target_steps // 10
 mmr_save_frequency = 200_000
 
 # ==================================== EXO ==============================================
-exo = 1
+exo = 2
 if exo == 1:
     print("Exo 1 launch")
     instance_state = CustomStateSetterExo1()
-    tensorboard_log: str = "logs_exo1"
+    tensorboard_log: str = "logs_exo1" #f"logs_exo{exo}"
     path_model_save: str = "models/PPO_model_exo1.zip"
 
 elif exo == 2:
     print("Exo 2 launch")
     instance_state = CustomStateSetterExo2()
-    tensorboard_log: str = "logs_exo2"
+    tensorboard_log: str = f"logs_exo{exo}"
     path_model_save: str = "models/PPO_model_exo2.zip"
 
 elif exo == 3:
     print("Exo 3 launch")
     instance_state = CustomStateSetterExo3()
-    tensorboard_log: str = "logs_exo3"
+    tensorboard_log: str = f"logs_exo{exo}"
     path_model_save: str = "models/PPO_model_exo3.zip"
 else:
     sys.exit("Veuillez sélectionner un exo.")
@@ -58,7 +59,7 @@ else:
 def get_match():
     return Match(
         team_size=agents_per_match,
-        reward_function=PlayerUnderBall(),
+        reward_function=PlayerUnderBall2(),
         spawn_opponents=False,
         terminal_conditions=[TimeoutCondition(500), BallTouchGround()],
         obs_builder=AdvancedObs(),
@@ -70,7 +71,9 @@ def get_match():
 # ==================================================================================
 
 if __name__ == "__main__":
+    print("test 0")
     env = SB3MultipleInstanceEnv(get_match, num_instances, wait_time=20)
+    print("test 0.5")
     env = VecMonitor(env)
 
     try:

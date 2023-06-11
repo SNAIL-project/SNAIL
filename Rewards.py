@@ -1,4 +1,5 @@
 from rlgym.utils import RewardFunction
+# from rlgym.utils.reward_functions import RewardFunction
 from rlgym.utils.gamestates import GameState, PlayerData
 from rlgym.utils import math as maths_rl
 import math
@@ -13,7 +14,8 @@ class PlayerUnderBall(RewardFunction):
     def reset(self, initial_state: GameState):  # Called every reset.
         pass
 
-    def get_reward(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> float:  # Called every step.
+    def get_reward(self, player: PlayerData, state: GameState,
+                   previous_action: np.ndarray) -> float:  # Called every step.
         car_pos = player.car_data.position
         ball_pos = state.ball.position
         ball_radius = 93.0  # le rayon de la balle est 93.0u
@@ -46,3 +48,32 @@ class SpeedReward(RewardFunction):
 
     def get_final_reward(self, player: PlayerData, state: GameState, previous_action: np.ndarray) -> float:
         return 0
+
+
+class PlayerUnderBall2(RewardFunction):
+
+    def reset(self, initial_state: GameState):
+        pass
+
+    def get_reward(self, state, prev_state):
+        #  calculates the distance between the agent and the ball using the Euclidean distance formula. If the agent is under the ball on the z-index and closer to the ball (distance less than 1000),
+        #  it is rewarded with a value of 1/distance. Otherwise, the agent is not rewarded. You can adjust the distance threshold and the reward value to suit your needs.
+        # La formule de la distance euclidienne entre deux points en trois dimensions est la suivante : =      distance = ((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2) ** 0.5
+
+        # Get the position of the agent and the ball
+        agent_pos = state.observation.players[0].physics.location
+        ball_pos = state.observation.ball.physics.location
+
+        # Calculate the distance between the agent and the ball
+        distance = ((agent_pos.x - ball_pos.x) ** 2 + (agent_pos.y - ball_pos.y) ** 2 + (
+                agent_pos.z - ball_pos.z) ** 2) ** 0.5
+
+
+        # Calculate the reward based on the distance
+        if agent_pos.z < ball_pos.z and distance < 1000:
+            reward = 1 / distance
+            print("distance = " + distance, "reward = " + reward)
+        else:
+            reward = 0
+
+        return reward
