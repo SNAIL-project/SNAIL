@@ -1,4 +1,5 @@
 import sys
+import os
 import numpy as np
 
 import rlgym
@@ -17,14 +18,14 @@ from Rewards import PlayerUnderBall2
 
 # =============================== option for model ============================================
 agents_per_match = 1
-num_instances = 1
-target_steps = 1000
+num_instances = 5
+target_steps = 10_000
 steps = target_steps // (num_instances * agents_per_match)
 batch_size = target_steps // 10
-mmr_save_frequency = 200_000
+mmr_save_frequency = 1_000_000
 
 # ==================================== EXO ==============================================
-exo = 1
+exo = 3
 if exo == 1:
     instance_state = CustomStateSetterExo1()
     tensorboard_log: str = f"logs_exo{exo}"
@@ -33,14 +34,14 @@ if exo == 1:
 
 elif exo == 2:
     instance_state = CustomStateSetterExo2()
-    tensorboard_log: str = f"logs_exo{exo}"
-    path_model_save: str = "models/PPO_model_exo2.zip"
+    tensorboard_log: str = f"logs_exo1-2"
+    path_model_save: str = "models/PPO_model_exo1-2.zip"
     print("Exo 2 launch")
 
 elif exo == 3:
     instance_state = CustomStateSetterExo3()
-    tensorboard_log: str = f"logs_exo{exo}"
-    path_model_save: str = "models/PPO_model_exo3.zip"
+    tensorboard_log: str = f"logs_exo1-2-3"
+    path_model_save: str = "models/PPO_model_exo1-2-3.zip"
     print("Exo 3 launch")
 else:
     sys.exit("Veuillez sélectionner un exo.")
@@ -81,8 +82,8 @@ if __name__ == "__main__":
             "MlpPolicy",
             env,
             n_epochs=10,  # Default value
-            learning_rate=1e-2,  # Default value 3e-4
-            gamma=0,  # Default value 0.99
+            learning_rate=1e-3,  # Default value 3e-4
+            gamma=0.99,  # Default value 0.99
             verbose=1,  # Print out all the info as we're going
             batch_size=batch_size,  # Batch size as high as possible within reason
             n_steps=steps,  # Number of steps to perform before optimizing network
@@ -99,13 +100,17 @@ if __name__ == "__main__":
 
         )
 
+    mmr_model_path = f"mmr_models/exo{exo}/"
+    if not os.path.exists(mmr_model_path):
+        os.makedirs(mmr_model_path)
+
     try:
         mmr_model_target_count = model.num_timesteps + mmr_save_frequency
         while True:
             model.learn(target_steps, reset_num_timesteps=False)
             model.save(path_model_save)
             if model.num_timesteps >= mmr_model_target_count:
-                model.save(f"mmr_models/{model.num_timesteps}")
+                model.save(mmr_model_path+str(model.num_timesteps))
                 mmr_model_target_count += mmr_save_frequency
 
     except KeyboardInterrupt:
