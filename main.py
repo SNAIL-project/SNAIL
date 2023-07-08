@@ -25,7 +25,7 @@ batch_size = target_steps // 10
 mmr_save_frequency = 1_000_000
 
 # ==================================== EXO ==============================================
-exo = 3
+exo = 5
 if exo == 1:
     instance_state = CustomStateSetterExo1()
     tensorboard_log: str = f"logs_exo{exo}"
@@ -34,29 +34,29 @@ if exo == 1:
 
 elif exo == 2:
     instance_state = CustomStateSetterExo2()
-    tensorboard_log: str = f"logs_exo1-2"
+    tensorboard_log: str = f"logs_exo{exo}"
     path_model_save: str = "models/PPO_model_exo1-2.zip"
     print("Exo 2 launch")
 
 elif exo == 3:
     instance_state = CustomStateSetterExo3()
-    tensorboard_log: str = f"logs_exo1-2-3"
+    tensorboard_log: str = f"logs_exo{exo}"
     path_model_save: str = "models/PPO_model_exo1-2-3.zip"
     print("Exo 3 launch")
 elif exo == 4:
     instance_state = CustomStateSetterExo4()
     tensorboard_log: str = f"logs_exo{exo}"
-    path_model_save: str = "models/PPO_model_exo4.zip"
+    path_model_save: str = "models/PPO_model_exo1-2-3-4.zip"
     print("Exo 4 launch")
 elif exo == 5:
     instance_state = CustomStateSetterExo5()
     tensorboard_log: str = f"logs_exo{exo}"
-    path_model_save: str = "models/PPO_model_exo5.zip"
+    path_model_save: str = "models/PPO_model_exo1-2-3-4-5.zip"
     print("Exo 5 launch")
 elif exo == 6:
     instance_state = CustomStateSetterExo6()
     tensorboard_log: str = f"logs_exo{exo}"
-    path_model_save: str = "models/PPO_model_exo6.zip"
+    path_model_save: str = "models/PPO_model_exo1-2-3-4-5-6.zip"
     print("Exo 6 launch")
 else:
     sys.exit("Veuillez sélectionner un exo.")
@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
         )
 
-    mmr_model_path = f"mmr_models/exo{exo}/"
+    mmr_model_path = f"mmr_models/exo1-2-3-4-5/"
     if not os.path.exists(mmr_model_path):
         os.makedirs(mmr_model_path)
 
