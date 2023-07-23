@@ -35,10 +35,10 @@ class CustomStateSetterExo2(StateSetter):
     def reset(self, state_wrapper: StateWrapper):
         for car in state_wrapper.cars:
             if car.team_num == 0:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
             elif car.team_num == 1:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
 
         car.set_pos(*desired_car_pos)
@@ -59,10 +59,10 @@ class CustomStateSetterExo3(StateSetter):
     def reset(self, state_wrapper: StateWrapper):
         for car in state_wrapper.cars:
             if car.team_num == 0:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
             elif car.team_num == 1:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
 
         car.set_pos(*desired_car_pos)
@@ -83,10 +83,10 @@ class CustomStateSetterExo4(StateSetter):
     def reset(self, state_wrapper: StateWrapper):
         for car in state_wrapper.cars:
             if car.team_num == 0:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
             elif car.team_num == 1:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
 
         car.set_pos(*desired_car_pos)
@@ -106,11 +106,11 @@ class CustomStateSetterExo5(StateSetter):
     def reset(self, state_wrapper: StateWrapper):
         for car in state_wrapper.cars:
             if car.team_num == 0:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 sign = np.random.choice([-1, 1])
                 yaw = np.random.uniform(sign*math.pi/4,sign*math.pi*3/4)
             elif car.team_num == 1:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 sign = np.random.choice([-1, 1])
                 yaw = np.random.uniform(sign*math.pi/4,sign*math.pi*3/4)
 
@@ -132,10 +132,10 @@ class CustomStateSetterExo6(StateSetter):
     def reset(self, state_wrapper: StateWrapper):
         for car in state_wrapper.cars:
             if car.team_num == 0:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
             elif car.team_num == 1:
-                desired_car_pos = [0, 0, 17]  # x, y, z
+                desired_car_pos = [0, 0, 17]
                 yaw = 0
 
         car.set_pos(*desired_car_pos)
