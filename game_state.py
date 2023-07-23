@@ -46,12 +46,11 @@ class CustomStateSetterExo2(StateSetter):
         car.set_rot(yaw=yaw)
         car.boost = 0
 
-        # Now we will spawn the ball in the center of the field, floating in the air.
         state_wrapper.ball.set_pos(x=0, y=0,
-                                   z=800)  # height_ball=153.0 mais le rayon de la balle est 93.0u  & hitbox_car = 36 so ball spawn at 189u & #max height 2044
-        state_wrapper.ball.set_lin_vel(200, 0, 0)  # la vitesse de la balle dans les trois dimensions de l'espace)
+                                   z=800) 
+        state_wrapper.ball.set_lin_vel(200, 0, 0) 
         state_wrapper.ball.set_ang_vel(0, 0,
-                                       0)  # la vitesse de rotation de la balle autour de chacun de ses axes (en roulis, tangage et lacet)
+                                       0)  
 
 
 class CustomStateSetterExo3(StateSetter):
@@ -71,12 +70,11 @@ class CustomStateSetterExo3(StateSetter):
         car.set_rot(yaw=yaw)
         car.boost = 0
 
-        # Now we will spawn the ball in the center of the field, floating in the air.
         state_wrapper.ball.set_pos(x=-400, y=0,
-                                   z=800)  # height_ball=153.0 mais le rayon de la balle est 93.0u  & hitbox_car = 36 so ball spawn at 189u & #max height 2044
-        state_wrapper.ball.set_lin_vel(200, 0, 0)  # la vitesse de la balle dans les trois dimensions de l'espace)
+                                   z=800)  
+        state_wrapper.ball.set_lin_vel(200, 0, 0) 
         state_wrapper.ball.set_ang_vel(0, 0,
-                                       0)  # la vitesse de rotation de la balle autour de chacun de ses axes (en roulis, tangage et lacet)
+                                       0)
 
 
 class CustomStateSetterExo4(StateSetter):
@@ -96,12 +94,11 @@ class CustomStateSetterExo4(StateSetter):
         car.set_rot(yaw=yaw)
         car.boost = 0
 
-        # Now we will spawn the ball in the center of the field, floating in the air.
         state_wrapper.ball.set_pos(x=-2000, y=0,
-                                   z=1500)  # height_ball=153.0 mais le rayon de la balle est 93.0u  & hitbox_car = 36 so ball spawn at 189u & #max height 2044
+                                   z=1500) 
 
-        state_wrapper.ball.set_lin_vel(1000, 0, 0)  # la vitesse de la balle dans les trois dimensions de l'espace)
-        state_wrapper.ball.set_ang_vel(0, 0, 0)  # la vitesse de rotation de la balle autour de chacun de ses axes (en roulis, tangage et lacet)
+        state_wrapper.ball.set_lin_vel(1000, 0, 0)
+        state_wrapper.ball.set_ang_vel(0, 0, 0)
 
 class CustomStateSetterExo5(StateSetter):
     def __init__(self):
@@ -122,12 +119,11 @@ class CustomStateSetterExo5(StateSetter):
         car.set_rot(yaw=yaw)
         car.boost = 0
 
-        # Now we will spawn the ball in the center of the field, floating in the air.
         state_wrapper.ball.set_pos(x=-2000, y=0,
-                                   z=1500)  # height_ball=153.0 mais le rayon de la balle est 93.0u  & hitbox_car = 36 so ball spawn at 189u & #max height 2044
+                                   z=1500)
 
-        state_wrapper.ball.set_lin_vel(1000, 0, 0)  # la vitesse de la balle dans les trois dimensions de l'espace)
-        state_wrapper.ball.set_ang_vel(0, 0, 0)  # la vitesse de rotation de la balle autour de chacun de ses axes (en roulis, tangage et lacet)
+        state_wrapper.ball.set_lin_vel(1000, 0, 0)
+        state_wrapper.ball.set_ang_vel(0, 0, 0)
 
 
 # class CustomStateSetterExo5(StateSetter):
