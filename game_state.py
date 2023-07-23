@@ -52,31 +52,8 @@ class CustomStateSetterExo2(StateSetter):
                                        0)  
 
 
+
 class CustomStateSetterExo3(StateSetter):
-    def __init__(self):
-        super().__init__()
-
-    def reset(self, state_wrapper: StateWrapper):
-        for car in state_wrapper.cars:
-            if car.team_num == 0:
-                desired_car_pos = [0, 0, 17]
-                yaw = 0
-            elif car.team_num == 1:
-                desired_car_pos = [0, 0, 17]
-                yaw = 0
-
-        car.set_pos(*desired_car_pos)
-        car.set_rot(yaw=yaw)
-        car.boost = 0
-
-        state_wrapper.ball.set_pos(x=-400, y=0,
-                                   z=800)  
-        state_wrapper.ball.set_lin_vel(200, 0, 0) 
-        state_wrapper.ball.set_ang_vel(0, 0,
-                                       0)
-
-
-class CustomStateSetterExo4(StateSetter):
     def __init__(self):
         super().__init__()
 
@@ -99,7 +76,7 @@ class CustomStateSetterExo4(StateSetter):
         state_wrapper.ball.set_lin_vel(1000, 0, 0)
         state_wrapper.ball.set_ang_vel(0, 0, 0)
 
-class CustomStateSetterExo5(StateSetter):
+class CustomStateSetterExo4(StateSetter):
     def __init__(self):
         super().__init__()
 
@@ -125,7 +102,7 @@ class CustomStateSetterExo5(StateSetter):
         state_wrapper.ball.set_ang_vel(0, 0, 0)
 
 
-class CustomStateSetterExo6(StateSetter):
+class CustomStateSetterExo5(StateSetter):
     def __init__(self):
         super().__init__()
 
