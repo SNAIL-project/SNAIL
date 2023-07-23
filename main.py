@@ -71,8 +71,8 @@ def get_match():
         spawn_opponents=False,
         terminal_conditions=[TimeoutCondition(500), BallTouchGround()],
         obs_builder=AdvancedObs(),
-        state_setter=instance_state,  # ball spawn on top of the car
-        action_parser=DiscreteAction()  # Transform continuous action to [-1,0,1]
+        state_setter=instance_state,
+        action_parser=DiscreteAction()
     )
 
 
@@ -96,23 +96,14 @@ if __name__ == "__main__":
         model = PPO(
             "MlpPolicy",
             env,
-            n_epochs=10,  # Default value
-            learning_rate=1e-3,  # Default value 3e-4
-            gamma=0.99,  # Default value 0.99
-            verbose=1,  # Print out all the info as we're going
-            batch_size=batch_size,  # Batch size as high as possible within reason
-            n_steps=steps,  # Number of steps to perform before optimizing network
-            tensorboard_log=tensorboard_log,  # `tensorboard --logdir logs_exoXX/PPO_0` in terminal to see graphs
-            device="auto",  # Uses GPU if available
-
-            #ent_coef = 0.1 # C'est le coefficient pour la pénalité d'entropie. Cela encourage l'exploration en ajoutant une pénalité pour les politiques de faible entropie
-                            # (c'est-à-dire les politiques trop certaines). Si vous constatez que votre agent n'explore pas assez, augmenter cette valeur pourrait aider.
-
-            # Utiliser une autre politique: Vous utilisez "MlpPolicy" qui est une politique à base de perceptron multicouche. Vous pourriez envisager d'essayer d'autres politiques,
-                            #  comme "CnnPolicy" si votre environnement a des entrées basées sur des images, ou "LstmPolicy" si votre environnement a des dépendances temporelles.
-
-
-
+            n_epochs=10,
+            learning_rate=1e-3,
+            gamma=0.99,
+            verbose=1,
+            batch_size=batch_size,
+            n_steps=steps,
+            tensorboard_log=tensorboard_log,
+            device="auto",
         )
 
     mmr_model_path = f"mmr_models/exo1-2-3-4-5/"
